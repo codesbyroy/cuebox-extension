@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "../fonts/inter.css";
+@plugin "daisyui";
+
+:root {
+    --font-sans: 'Inter', 'InterVariable', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-serif: 'Merriweather', serif;
+    --font-inter: 'Inter', sans-serif;
+    --font-inter-variable: 'InterVariable', sans-serif;
+    --font-inter-display: 'InterDisplay', sans-serif;
+}

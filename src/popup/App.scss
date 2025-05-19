@@ -1,0 +1,165 @@
+// Variables
+$dark-bg: #040711;
+$dark-text: #f5f5f7;
+$dark-tooltip: #1f2937;
+$dark-menu-icon: #f4a996;
+$light-text: #333;
+$light-bg: #f5f5f7;
+$light-container: #F8F9FA;
+$light-separator: #BEE3F8;
+$light-tooltip: #BEE3F8;
+$light-app-bg: #E8E3E1;
+$light-menu-icon: #1f4b55;
+
+// Common styles
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+// App background
+.app-background {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    transform: none !important; // Prevent app from being affected by transforms
+        
+    // Dark theme (default)
+    background-image: url('../assets/theme/dark/background.svg');
+    background-color: $dark-bg;
+}
+
+// Theming
+body {
+    transition: background-color 0.3s ease;
+    background-color: $dark-bg;
+    color: $dark-text;
+}
+
+// Light theme overrides
+html {
+    &:not(.dark) {
+    .app-background {
+        background-image: url('../assets/theme/light/background.svg');
+        background-color: $light-app-bg;
+    }
+                
+    body {
+        background-color: $light-bg;
+        color: $light-text;
+    }
+                
+    // Bookmark styles
+    .list-row {
+        background-color: $light-container;
+        color: black;
+                        
+        &:not(:last-child)::after {
+        content: "";
+        display: block;
+        border-bottom: 1px solid $light-separator;
+        margin-top: 0.5rem;
+        }
+    }
+                
+    // Tooltip styles
+    .bookmark-tooltip {
+        background-color: $light-tooltip;
+        color: black;
+    }
+    }
+}
+
+// List row transitions
+.list-row {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// List container styles
+.list {
+    background-color: $light-container;
+        
+    html.dark & {
+    background-color: var(--base-100, #1d232a);
+    }
+}
+
+// Footer text styles
+.footer-text, .no-cue {
+    color: $light-text;
+        
+    html.dark & {
+    color: $dark-text;
+    }
+}
+
+// Bookmark button styles
+.bookmark-button-group {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    transition: all 0.3s ease-in-out;
+    padding: 6px;
+}
+
+// Menu icon colors
+.menu-icon {
+    color: $light-menu-icon;
+    
+    html.dark & {
+        color: $dark-menu-icon;
+    }
+}
+
+// Tooltip styles
+.bookmark-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    opacity: 0;
+    z-index: 10;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    background-color: $dark-tooltip;
+    color: white;
+        
+    .bookmark-button-group:hover & {
+    opacity: 1;
+    }
+}
+
+// Empty state message
+.empty-state-message {
+
+    html.dark & {
+    color: rgba($dark-text, 0.7);
+    }
+        
+    html:not(.dark) & {
+    color: rgba($light-text, 0.7);
+    }
+}
+
+// Search input animation container
+.search-container {
+  position: relative;
+  overflow: hidden;
+}
+
+// Prevent transform effects from affecting other elements
+.transform-isolate {
+  transform-style: flat;
+  isolation: isolate;
+}
