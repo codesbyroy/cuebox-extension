@@ -1,6 +1,6 @@
 # CueBox Chrome Extension
 
-> **This repository is private and non-sharable. It is intended solely for contributors and is the property of [hablar.co](https://hablar.co). Unauthorized sharing, copying, or distribution is strictly prohibited.**
+A Chrome extension for saving and managing AI prompts. Developed by [hablar](https://cuebox.store).
 
 ---
 
@@ -90,16 +90,16 @@
 
 ---
 
-## 🤝 Contributing
+## 🤝 Contact
 
-This repository is private and only accessible to approved contributors.  
-For access requests, contact the maintainers at [hablar.co](https://hablar.co).
+This project is maintained by [hablar](https://cuebox.store).
+While this project is open-source under the MIT License, we are not currently accepting external contributions.
+For questions or feedback, please contact the maintainers at [hablar](https://cuebox.store).
 
 ---
 
 ## 📄 License
 
-© hablar.co. All rights reserved.  
-Unauthorized use or distribution is strictly prohibited.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
