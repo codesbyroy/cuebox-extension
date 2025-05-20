@@ -38,7 +38,7 @@ A Chrome extension for saving and managing AI prompts. Developed by [hablar](htt
 
 1. **Clone the repository:**
     ```
-    git clone git@bitbucket.org:hablar/cuebox.git
+    git clone git@github.com:codesbyroy/cuebox-extension.git
     cd cuebox
     ```
 
