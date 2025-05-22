@@ -134,7 +134,7 @@ const Bookmark = ({ bookmark }: BookmarkProps) => {
                             }}
                             className="ml-1 inline-flex items-cente cursor-pointer"
                         >
-                            <FaCircleChevronDown size={15} className="menu-icon absolute bottom-4" />
+                            <FaCircleChevronDown size={14} className="menu-icon absolute bottom-4" />
                         </button>
                     )}
                     {isExpanded && (
@@ -145,7 +145,7 @@ const Bookmark = ({ bookmark }: BookmarkProps) => {
                             }}
                             className="ml-1 inline-flex items-center cursor-pointer"
                         >
-                            <FaCircleChevronUp size={15} className="menu-icon absolute bottom-4" />
+                            <FaCircleChevronUp size={14} className="menu-icon absolute bottom-4" />
                         </button>
                     )}
                 </span>
