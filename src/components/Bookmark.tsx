@@ -8,7 +8,7 @@ import { useState, useRef, useEffect } from "react";
 import { SiClaude, SiOpenai, SiGooglegemini, SiPerplexity } from "react-icons/si";
 import { FaRegCopy } from "react-icons/fa6";
 import { IoNavigateCircleOutline } from "react-icons/io5";
-import { FaRegTrashCan } from "react-icons/fa6";
+import { FaRegTrashCan, FaCircleChevronUp, FaCircleChevronDown } from "react-icons/fa6";
 import { TbWorldSearch } from "react-icons/tb";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FiX } from "react-icons/fi";
@@ -22,6 +22,8 @@ interface BookmarkProps {
 const Bookmark = ({ bookmark }: BookmarkProps) => {
     // State to track if menu is open
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    // State to track if text is expanded
+    const [isExpanded, setIsExpanded] = useState(false);
     // Ref for the menu container
     const menuRef = useRef<HTMLDivElement>(null);
     
@@ -101,9 +103,12 @@ const Bookmark = ({ bookmark }: BookmarkProps) => {
     };
 
     // Truncate text if it's too long
-    const truncateText = (text: string, maxLength: number = 100) => {
+    const truncateText = (text: string, maxLength: number = 180) => {
         return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
     };
+    
+    // Check if text is truncated
+    const isTextTruncated = bookmark.text.length > 180;
 
     return (
         <li className="list-row relative">
@@ -116,8 +121,34 @@ const Bookmark = ({ bookmark }: BookmarkProps) => {
             </div>
             
             {/* Bookmark content */}
-            <div className={isMenuOpen ? 'opacity-30 transition-opacity duration-300' : 'opacity-60 transition-opacity duration-300'}>
-                <div className="text-xs font-semibold">{truncateText(bookmark.text)}</div>
+            <div className="text-xs font-semibold">
+                <span className={isMenuOpen ? 'opacity-30 transition-opacity duration-300' : 'opacity-60 transition-opacity duration-300'}>  
+                    {isExpanded ? bookmark.text : truncateText(bookmark.text)}
+                </span>
+                <span className="inline-block" style={{ opacity: 1 }}>
+                    {isTextTruncated && !isExpanded && (
+                        <button 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsExpanded(true);
+                            }}
+                            className="ml-1 inline-flex items-center"
+                        >
+                            <FaCircleChevronDown size={15} className="menu-icon absolute bottom-4" />
+                        </button>
+                    )}
+                    {isExpanded && (
+                        <button 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsExpanded(false);
+                            }}
+                            className="ml-1 inline-flex items-center"
+                        >
+                            <FaCircleChevronUp size={15} className="menu-icon absolute bottom-4" />
+                        </button>
+                    )}
+                </span>
             </div>
 
             {/* Menu button */}

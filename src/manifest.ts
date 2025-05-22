@@ -38,16 +38,22 @@ export default defineManifest({
     // Content scripts injected into web pages
     content_scripts: [
         {
-            matches: ["https://*/*", "http://*/*"],
+            matches: [
+                "https://chat.openai.com/*",
+                "https://chatgpt.com/*",
+                "https://claude.ai/*",
+                "https://gemini.google.com/*",
+                "https://www.perplexity.ai/*"
+            ],
             js: ["src/content/index.ts"],
             run_at: "document_idle"
         }
     ],
                 
     // Required permissions
-    permissions: ["storage", "tabs", "contextMenus", "notifications", "clipboardWrite", "activeTab"],
+    permissions: ["storage", "contextMenus", "notifications", "clipboardWrite", "activeTab"],
     host_permissions: [
-        "<all_urls>",
+        "https://chat.openai.com/*",
         "https://chatgpt.com/*",
         "https://claude.ai/*",
         "https://gemini.google.com/*",
@@ -58,7 +64,13 @@ export default defineManifest({
     web_accessible_resources: [
         {
             resources: ["assets/*", "images/*", "icon/*"],
-            matches: ["<all_urls>"]
+            matches: [
+                "https://chat.openai.com/*",
+                "https://chatgpt.com/*",
+                "https://claude.ai/*",
+                "https://gemini.google.com/*",
+                "https://www.perplexity.ai/*"
+            ]
         }
     ]
 })
