@@ -132,7 +132,7 @@ const Bookmark = ({ bookmark }: BookmarkProps) => {
                                 e.stopPropagation();
                                 setIsExpanded(true);
                             }}
-                            className="ml-1 inline-flex items-center"
+                            className="ml-1 inline-flex items-cente cursor-pointer"
                         >
                             <FaCircleChevronDown size={15} className="menu-icon absolute bottom-4" />
                         </button>
@@ -143,7 +143,7 @@ const Bookmark = ({ bookmark }: BookmarkProps) => {
                                 e.stopPropagation();
                                 setIsExpanded(false);
                             }}
-                            className="ml-1 inline-flex items-center"
+                            className="ml-1 inline-flex items-center cursor-pointer"
                         >
                             <FaCircleChevronUp size={15} className="menu-icon absolute bottom-4" />
                         </button>
