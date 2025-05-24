@@ -8,9 +8,9 @@ import { defineManifest } from '@crxjs/vite-plugin'
 
 export default defineManifest({
     manifest_version: 3,
-    name: "CueBox",
-    version: "1.0.0",
-    description: "Bookmark Cues, Get Smart Prompts",
+    name: "CueBox - Save, organize, and reuse AI prompts",
+    version: "1.1.0",
+    description: "Resume chats, filter and organize prompts, and switch platforms seamlessly — all for faster, streamlined workflows.",
                 
     // Extension icons
     icons: {

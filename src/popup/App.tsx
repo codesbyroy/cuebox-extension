@@ -84,7 +84,7 @@ function App() {
                         <Header />
                                                                                     
                         {/* Main content area with fixed height based on bookmark count */}
-                        <main className="px-2 w-full mt-2 overflow-auto" style={{ height: `${dynamicHeight - 90}px` }}>
+                        <main className="px-2 w-full mt-3 overflow-auto" style={{ height: `${dynamicHeight - 90}px` }}>
                             <List isMaxHeight={dynamicHeight === maxHeight} />
                         </main>
                                                                                     

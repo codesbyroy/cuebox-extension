@@ -96,30 +96,75 @@ function scrollToBookmarkedText() {
         // Fallback in case range is invalid
         if (!rangeStarted || range.collapsed) return false;
 
-        // Highlight
-        const span = document.createElement("span");
-        span.style.backgroundColor = "rgba(227, 246, 252, 0.5)";
-        span.style.outline = "2px solid #4dabf7";
-        span.style.borderRadius = "4px";
+        // Highlight using CSS class to handle multiple spans
+        const highlightClass = "cuebox-highlight-" + Date.now();
+        const style = document.createElement("style");
+        style.textContent = `.${highlightClass} { 
+            background-color: rgba(227, 246, 252, 0.5); 
+            outline: 2px solid #4dabf7; 
+            border-radius: 4px; 
+        }`;
+        document.head.appendChild(style);
+        
+        // Create a document fragment for the highlighted content
+        const highlightedSpans: HTMLElement[] = [];
+        
         try {
+            // Try the simple approach first
+            const span = document.createElement("span");
+            span.className = highlightClass;
             range.surroundContents(span);
+            highlightedSpans.push(span);
+            
+            // Scroll to the first span
+            setTimeout(() => {
+                span.scrollIntoView({ behavior: "smooth", block: "center" });
+            }, 50);
         } catch (e) {
-            // Some cases like partial tag wrapping can throw
-            const temp = document.createElement("span");
-            temp.appendChild(range.extractContents());
-            span.appendChild(temp);
-            range.insertNode(span);
+            // For complex ranges that cross element boundaries
+            // Use a different approach with multiple spans
+            
+            // Extract the range contents
+            const fragment = range.extractContents();
+            
+            // Create a wrapper for the extracted content
+            const wrapper = document.createElement("span");
+            wrapper.appendChild(fragment);
+            
+            // Process all text nodes in the fragment and wrap them in highlight spans
+            const processNode = (node: Node) => {
+                if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()) {
+                    const span = document.createElement("span");
+                    span.className = highlightClass;
+                    node.parentNode?.insertBefore(span, node);
+                    span.appendChild(node);
+                    highlightedSpans.push(span);
+                } else {
+                    // Process child nodes
+                    const childNodes = Array.from(node.childNodes);
+                    childNodes.forEach(processNode);
+                }
+            };
+            
+            processNode(wrapper);
+            
+            // Insert the processed content back
+            range.insertNode(wrapper);
+            
+            // Scroll to the first highlighted span
+            if (highlightedSpans.length > 0) {
+                setTimeout(() => {
+                    highlightedSpans[0].scrollIntoView({ behavior: "smooth", block: "center" });
+                }, 50);
+            }
         }
-
-        setTimeout(() => {
-            span.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 50);
-
+        
         // Auto-remove highlight after a while
         setTimeout(() => {
-            span.style.backgroundColor = "";
-            span.style.outline = "";
-            span.style.borderRadius = "";
+            // Remove the style element
+            if (document.contains(style)) {
+                document.head.removeChild(style);
+            }
         }, 3000);
 
         return true;

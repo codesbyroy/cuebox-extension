@@ -11,6 +11,7 @@ A Chrome extension for saving and managing AI prompts. Developed by [hablar](htt
 - Bookmark prompts for easy retrieval and reuse
 - Link back to the original page/context where the prompt was created
 - Start fresh conversation using the saved prompts
+- Seamless use of prompts across supported apps. 
 - Search and filter your saved prompts
 - User-friendly popup UI for managing prompts
 
@@ -18,6 +19,7 @@ A Chrome extension for saving and managing AI prompts. Developed by [hablar](htt
 - Create new prompts using AI-powered assistance
 - Smart prompt enhancer for refining and optimizing inputs
 - Cross-platform prompt syncing and navigation
+- Prompt sharing feature among users
 
 ---
 
@@ -76,6 +78,7 @@ A Chrome extension for saving and managing AI prompts. Developed by [hablar](htt
 - [x] Sync across devices
 - [x] Search/filter saved prompts
 - [x] Start fresh convo using prompts
+- [x] Seamless use of prompts across supported apps
 - [ ] Prompt sharing features
 - [ ] AI-powered 10-word auto-labeling
 

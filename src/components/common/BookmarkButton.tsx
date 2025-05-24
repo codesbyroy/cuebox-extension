@@ -36,10 +36,6 @@ const BookmarkButton = ({
     * Executes the provided onClick callback and manages copied state
     */
     const handleClick = () => {
-        if (onClick) {
-            onClick();
-        }
-                                
         if (showCopiedState) {
             // Clear any existing timeout
             if (timeoutRef.current) {
@@ -54,6 +50,10 @@ const BookmarkButton = ({
                 timeoutRef.current = null;
             }, 2000);
         }
+        
+        if (onClick) {
+            onClick();
+        }
     };
 
     return (
@@ -66,7 +66,7 @@ const BookmarkButton = ({
             {icon}
 
             {/* Tooltip */}
-            <span className="bookmark-tooltip">
+            <span className="bookmark-tooltip mb-1">
                 {showCopiedState && copied ? (
                     <>
                         <FaCheck size={12} className="text-green-400" /> Copied!
